@@ -4,7 +4,6 @@ package servlet;
 import dao.UsersDao;
 import entity.User;
 import util.FreemarkerHandler;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

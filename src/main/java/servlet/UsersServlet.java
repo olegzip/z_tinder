@@ -3,8 +3,6 @@ package servlet;
 import dao.UsersDao;
 import entity.User;
 import util.FreemarkerHandler;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

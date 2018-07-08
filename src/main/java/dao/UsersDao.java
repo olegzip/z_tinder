@@ -33,7 +33,7 @@ public class UsersDao {
             Connection connection = DatabaseConnection.getConnection();
             Statement statement = connection.createStatement()
     ) {
-      ResultSet resultSet = statement.executeQuery("SELECT * FROM zozich_users WHERE liked IS NULL LIMIT 1");
+      ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE liked IS NULL LIMIT 1");
 
       if (resultSet.next()) {
         return getUserFromResultSet(resultSet);
@@ -48,7 +48,7 @@ public class UsersDao {
   public void saveLike(String userId, boolean like) {
     try (
             Connection connection = DatabaseConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement("UPDATE zozich_users SET liked=? WHERE id=?")
+            PreparedStatement statement = connection.prepareStatement("UPDATE users SET liked=? WHERE name=?")
     ) {
       statement.setBoolean(1, like);
       statement.setString(2, userId);
@@ -66,7 +66,7 @@ public class UsersDao {
             Connection connection = DatabaseConnection.getConnection();
             Statement statement = connection.createStatement()
     ) {
-      ResultSet resultSet = statement.executeQuery("SELECT * FROM zozich_users WHERE liked IS TRUE");
+      ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE liked IS TRUE");
 
       while (resultSet.next()) {
         users.add(getUserFromResultSet(resultSet));
@@ -78,12 +78,12 @@ public class UsersDao {
     return users;
   }
 
-  public User getUserByLoginAndPassword(String login, String password) {
+  public User getUserByLoginAndPassword(String name, String password) {
     try (
             Connection connection = DatabaseConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM zozich_users WHERE name=? AND password=?")
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE name=? AND password=?")
     ) {
-      statement.setString(1, login);
+      statement.setString(1, name);
       statement.setString(2, password);
 
       statement.execute();

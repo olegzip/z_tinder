@@ -5,6 +5,7 @@ public class User {
   private String name;
   private String photo;
   private Boolean liked;
+  private String password;
 
   public User(int id, String name, String photo) {
     this.id = id;
@@ -48,5 +49,13 @@ public class User {
 
   public void setLiked(Boolean liked) {
     this.liked = liked;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
   }
 }
