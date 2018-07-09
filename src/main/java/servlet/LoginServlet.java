@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
     if (user == null) {
       resp.getWriter().write("Wrong credentials");
     } else {
-      Cookie cookie = new Cookie("user-id", String.valueOf(user.getId()));
+      Cookie cookie = new Cookie("user-id", user.getName());
       resp.addCookie(cookie);
       resp.sendRedirect("/users");
     }

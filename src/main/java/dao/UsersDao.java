@@ -2,7 +2,6 @@ package dao;
 
 import entity.User;
 import util.DatabaseConnection;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,13 +44,13 @@ public class UsersDao {
     return null;
   }
 
-  public void saveLike(String userId, boolean like) {
+  public void saveLike(String name, boolean like) {
     try (
             Connection connection = DatabaseConnection.getConnection();
             PreparedStatement statement = connection.prepareStatement("UPDATE users SET liked=? WHERE name=?")
     ) {
       statement.setBoolean(1, like);
-      statement.setString(2, userId);
+      statement.setString(2, name);
 
       statement.executeUpdate();
     } catch (SQLException e) {

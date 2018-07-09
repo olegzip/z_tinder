@@ -1,5 +1,6 @@
 package util;
 
+import dao.MessagesDao;
 import dao.UsersDao;
 import filter.LoginFilter;
 import org.eclipse.jetty.server.Server;
@@ -17,6 +18,7 @@ public class TinderServer {
     ServletContextHandler handler = new ServletContextHandler();
 
     UsersDao usersDao = new UsersDao();
+    MessagesDao messagesDao = new MessagesDao();
 
     ServletHolder usersHolder = new ServletHolder(new UsersServlet(usersDao));
     handler.addServlet(usersHolder, "/users");
@@ -24,7 +26,7 @@ public class TinderServer {
     ServletHolder likedHolder = new ServletHolder(new LikedServlet(usersDao));
     handler.addServlet(likedHolder, "/liked");
 
-    ServletHolder messagesHolder = new ServletHolder(new MessagesServlet());
+    ServletHolder messagesHolder = new ServletHolder(new MessagesServlet(messagesDao));
     handler.addServlet(messagesHolder, "/messages/*");
 
     ServletHolder loginHolder = new ServletHolder(new LoginServlet(usersDao));

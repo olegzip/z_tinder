@@ -2,7 +2,6 @@ package servlet;
 
 import dao.UsersDao;
 import util.FreemarkerHandler;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

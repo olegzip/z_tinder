@@ -8,7 +8,11 @@
   <h1>List of users you liked</h1>
   <#list users as user>
     <h2>
-      <a href="/messages/${user.id}">${user.name}</a>
+      <form method="post">
+          <a href="/messages/${user.id}">${user.name}</a>
+          <input type="hidden" name="to" value="${user.name}">
+
+      </form>
     </h2>
   </#list>
 </body>
