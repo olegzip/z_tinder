@@ -5,7 +5,7 @@ public class Message {
   private int id;
   private String from;
   private String to;
-  private String message;
+  public String text;
 
   public int getId() {
     return id;
@@ -31,11 +31,11 @@ public class Message {
     this.to = to;
   }
 
-  public String getMessage() {
-    return message;
+  public String getText() {
+    return text;
   }
 
-  public void setMessage(String message) {
-    this.message = message;
+  public void setText(String text) {
+    this.text = text;
   }
 }

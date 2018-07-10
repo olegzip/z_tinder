@@ -8,9 +8,13 @@
   <h1>List of users you liked</h1>
   <#list users as user>
     <h2>
-      <form method="post">
-          <a href="/messages/${user.id}">${user.name}</a>
-          <input type="hidden" name="to" value="${user.name}">
+      <form method="post" action="messages/${user.id}">
+          <!--<a href="/messages/${user.id}">${user.name}</a>-->
+         <!-- <input type="hidden" name="to" value="${user.name}">-->
+          <img src="${user.photo}" width="189" alt="photo"><br>
+          <!--<input type="hidden" name="from" value="${user.id}"><br>-->
+          <button type="submit" name="to" value="${user.name}">Start chat with ${user.name}</button>
+
 
       </form>
     </h2>

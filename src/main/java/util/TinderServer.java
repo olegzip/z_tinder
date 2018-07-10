@@ -14,7 +14,7 @@ import servlet.UsersServlet;
 
 public class TinderServer {
   public void start() throws Exception {
-    Server server = new Server(8081);
+    Server server = new Server(8080);
     ServletContextHandler handler = new ServletContextHandler();
 
     UsersDao usersDao = new UsersDao();

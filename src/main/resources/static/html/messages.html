@@ -8,8 +8,13 @@
   <h1>Messages</h1>
   <#list messages as message>
     <h2>
-      ${message.message}
+      ${message.text}
+      <br>
     </h2>
   </#list>
+<form method="post" action="/messages">
+    <input type="text" autofocus>
+    <input type="submit" name="message">
+</form>
 </body>
 </html>

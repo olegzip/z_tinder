@@ -28,9 +28,8 @@ public class MessagesServlet extends HttpServlet {
   }
 
   @Override
-  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     PrintWriter writer = resp.getWriter();
-
 
     String from = "";
     String to = req.getParameter("to");
@@ -40,6 +39,11 @@ public class MessagesServlet extends HttpServlet {
         from = cookie.getValue();
         break;
       }
+    }
+
+    String messageToSend = req.getParameter("message");
+    if(messageToSend!=null){
+        messagesDao.saveMessage(from, to, req.getParameter(messageToSend));
     }
 
     Map<String, Object> variables = new HashMap<>();

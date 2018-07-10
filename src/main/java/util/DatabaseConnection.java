@@ -14,7 +14,7 @@ public class DatabaseConnection {
     //postgresql
     String URL = "jdbc:postgresql://localhost:5432/z_tinder";
     String USER = "postgres";
-    String PASSWORD = "5545";
+    String PASSWORD = "1";
 
     return DriverManager.getConnection(URL, USER, PASSWORD);
   }
