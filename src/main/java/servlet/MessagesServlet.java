@@ -28,26 +28,28 @@ public class MessagesServlet extends HttpServlet {
   }
 
   @Override
-  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
     PrintWriter writer = resp.getWriter();
-
-    String from = "";
-    String to = req.getParameter("to");
+    String sender = "";
+    String reciever = req.getParameter("reciever");
+    String id = req.getParameter("id");
     Cookie[] cookies = req.getCookies();
     for (Cookie cookie : cookies) {
       if (cookie.getName().equals("user-id")) {
-        from = cookie.getValue();
+        sender = cookie.getValue();
         break;
       }
     }
-
-    String messageToSend = req.getParameter("message");
-    if(messageToSend!=null){
-        messagesDao.saveMessage(from, to, req.getParameter(messageToSend));
+    String text = req.getParameter("message");
+    if(text!=null){
+        messagesDao.saveMessage(sender, reciever, text);
     }
 
     Map<String, Object> variables = new HashMap<>();
-    List<Message> messages = messagesDao.getAllMessages(from, to);
+    List<Message> messages = messagesDao.getAllMessages(sender, reciever);
+
+    variables.put("id", id);
+    variables.put("reciever", reciever);
     variables.put("messages", messages);
 
     FreemarkerHandler.processTemplate(writer, variables, "messages.html");

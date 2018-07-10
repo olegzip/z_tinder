@@ -9,38 +9,36 @@ import java.util.List;
 
 public class MessagesDao {
 
-  public List<Message> getAllMessages(String from, String to){
+  public List<Message> getAllMessages(String sender, String reciever){
     List<Message> chat = new ArrayList<>();
     try (
             Connection connection = DatabaseConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM messages WHERE messages.from=? AND messages.to=? ORDER BY id ASC")
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM messages WHERE messages.sender=? AND messages.reciever=? ORDER BY id ASC")
     ){
-      statement.setString(1, from);
-      statement.setString(2, to);
+      statement.setString(1, sender);
+      statement.setString(2, reciever);
       ResultSet resultSet = statement.executeQuery();
       while(resultSet.next()){
         Message message = new Message();
         message.setId(resultSet.getInt("id"));
-        message.setFrom(resultSet.getString("from"));
-        message.setTo(resultSet.getString("to"));
+        message.setSender(resultSet.getString("sender"));
+        message.setReciever(resultSet.getString("reciever"));
         message.setText(resultSet.getString("message"));
         chat.add(message);
       }
-
-
   } catch (SQLException e){
     e.printStackTrace();
   }
     return chat;
   }
 
-  public void saveMessage(String from, String to, String message){
+  public void saveMessage(String sender, String reciever, String message){
     try (
             Connection connection = DatabaseConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO messages(from, to, message) VALUES (?, ?, ?)")
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO messages (sender, reciever, message) VALUES (?, ?, ?)")
     ){
-      statement.setString(1, from);
-      statement.setString(2, to);
+      statement.setString(1, sender);
+      statement.setString(2, reciever);
       statement.setString(3, message);
       statement.executeUpdate();
     } catch (SQLException e){

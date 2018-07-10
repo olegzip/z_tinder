@@ -12,9 +12,11 @@
       <br>
     </h2>
   </#list>
-<form method="post" action="/messages">
-    <input type="text" autofocus>
-    <input type="submit" name="message">
+<form method="post" action="/messages/${id}">
+    <input type="hidden" name="id" value="${id}">
+    <input type="hidden" name="reciever" value="${reciever}">
+    <input type="text" name="message" autofocus>
+    <input type="submit" value="Send">
 </form>
 </body>
 </html>

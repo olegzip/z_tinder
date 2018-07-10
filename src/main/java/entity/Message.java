@@ -2,9 +2,9 @@ package entity;
 
 public class Message {
 
-  private int id;
-  private String from;
-  private String to;
+  private Integer id;
+  private String sender;
+  private String reciever;
   public String text;
 
   public int getId() {
@@ -15,20 +15,20 @@ public class Message {
     this.id = id;
   }
 
-  public String getFrom() {
-    return from;
+  public String getSender() {
+    return sender;
   }
 
-  public void setFrom(String from) {
-    this.from = from;
+  public void setSender(String sender) {
+    this.sender = sender;
   }
 
-  public String getTo() {
-    return to;
+  public String getReciever() {
+    return reciever;
   }
 
-  public void setTo(String to) {
-    this.to = to;
+  public void setReciever(String reciever) {
+    this.reciever = reciever;
   }
 
   public String getText() {
