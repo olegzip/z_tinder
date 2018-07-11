@@ -1,7 +1,9 @@
 package servlet;
 
 import dao.MessagesDao;
+import dao.UsersDao;
 import entity.Message;
+import entity.User;
 import util.FreemarkerHandler;
 
 import javax.servlet.ServletException;
@@ -47,7 +49,10 @@ public class MessagesServlet extends HttpServlet {
 
     Map<String, Object> variables = new HashMap<>();
     List<Message> messages = messagesDao.getAllMessages(sender, reciever);
+    UsersDao usersDao = new UsersDao();
+    User recieverUser = usersDao.getUserByLogin(reciever);
 
+    variables.put("recieverUser", recieverUser);
     variables.put("id", id);
     variables.put("reciever", reciever);
     variables.put("messages", messages);

@@ -98,4 +98,25 @@ public class UsersDao {
 
     return null;
   }
+
+    public User getUserByLogin(String name) {
+        try (
+                Connection connection = DatabaseConnection.getConnection();
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE name=?")
+        ) {
+            statement.setString(1, name);
+
+            statement.execute();
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return getUserFromResultSet(resultSet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

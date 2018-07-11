@@ -7,10 +7,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-import servlet.LikedServlet;
-import servlet.LoginServlet;
-import servlet.MessagesServlet;
-import servlet.UsersServlet;
+import servlet.*;
 
 public class TinderServer {
   public void start() throws Exception {
@@ -31,6 +28,9 @@ public class TinderServer {
 
     ServletHolder loginHolder = new ServletHolder(new LoginServlet(usersDao));
     handler.addServlet(loginHolder, "/login");
+
+    ServletHolder staticHolder = new ServletHolder(new StaticServlet());
+    handler.addServlet(staticHolder, "/css/*");
 
     FilterHolder loginFilter = new FilterHolder(new LoginFilter());
     handler.addFilter(loginFilter, "/*", null);
