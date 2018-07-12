@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     PrintWriter writer = resp.getWriter();
 
-    FreemarkerHandler.processTemplate(writer, new HashMap<>(), "login.html");
+    FreemarkerHandler.processTemplate(writer, new HashMap<>(), "login.html", this.getClass());
   }
 
   @Override

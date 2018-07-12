@@ -56,6 +56,6 @@ public class MessagesServlet extends HttpServlet {
     variables.put("reciever", reciever);
     variables.put("messages", messages);
 
-    FreemarkerHandler.processTemplate(writer, variables, "messages.html");
+    FreemarkerHandler.processTemplate(writer, variables, "messages.html", this.getClass());
   }
 }
