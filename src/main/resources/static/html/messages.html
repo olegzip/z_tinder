@@ -46,9 +46,10 @@
             </div>
             <div class="chat-content">
                 <div class="col-md-12 chats pt-3 pl-2 pr-3 pb-3">
+                    <ul class="p-0">
+
                     <#list messages as message>
                     <#if reciever == message.reciever>
-                    <ul class="p-0">
                         <li class="send-msg float-right mb-2">
                             <p class="pt-1 pb-1 pl-2 pr-2 m-0 rounded">
                                 ${message.text}
@@ -66,9 +67,10 @@
                                 <span class="receive-msg-time">${message.sender}, Jan 25, 6:20 PM (in progress...)</span>
                             </div>
                         </li>
-                    </ul>
+
                 </#if>
             </#list>
+                </ul>
         </div>
         <div class="col-md-12 p-2 msg-box border border-primary">
             <div class="row">
@@ -77,12 +79,10 @@
                 </div>
                 <div class="col-md-7 pl-0">
                     <form action="<#if id??>${id}<#else>Ups...</#if>" method="post">
-
                         <input type="text" class="border-0" placeholder=" Send message" name="message" autofocus/>
                         <input type="hidden" name="reciever" value="<#if reciever??>${reciever}<#else>null</#if>">
                         <input type="hidden" name="id" value="<#if id??>${id}<#else>Ups....</#if>">
                         <input type="submit" style="visibility: hidden;"/>
-
                     </form>
                 </div>
                 <div class="col-md-3 text-right options-right">
