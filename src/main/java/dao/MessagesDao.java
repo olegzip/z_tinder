@@ -2,7 +2,6 @@ package dao;
 
 import entity.Message;
 import util.DatabaseConnection;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +12,16 @@ public class MessagesDao {
     List<Message> chat = new ArrayList<>();
     try (
             Connection connection = DatabaseConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM messages WHERE messages.sender=? AND messages.reciever=? ORDER BY id ASC")
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM messages WHERE " +
+                    "messages.sender=? AND messages.reciever=? " +
+                    " UNION SELECT * FROM messages WHERE " +
+                    "messages.sender=? AND messages.reciever=? " +
+                    " ORDER BY id ASC")
     ){
       statement.setString(1, sender);
       statement.setString(2, reciever);
+      statement.setString(3, reciever);
+      statement.setString(4, sender);
       ResultSet resultSet = statement.executeQuery();
       while(resultSet.next()){
         Message message = new Message();
@@ -45,6 +50,4 @@ public class MessagesDao {
       e.printStackTrace();
     }
   }
-
-
 }

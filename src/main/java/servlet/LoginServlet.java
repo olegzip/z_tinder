@@ -1,11 +1,9 @@
 package servlet;
 
-
 import dao.UsersDao;
 import entity.User;
 import util.FreemarkerHandler;
 import util.SetLikesToNull;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

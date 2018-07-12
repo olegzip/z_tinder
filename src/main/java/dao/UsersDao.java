@@ -12,7 +12,6 @@ public class UsersDao {
 //        .filter(user -> Boolean.TRUE.equals(user.getLiked()))
 //        .collect(Collectors.toList());
 //  }
-
   private User getUserFromResultSet(ResultSet resultSet) throws SQLException {
     int id = resultSet.getInt("id");
     String name = resultSet.getString("name");
@@ -23,7 +22,6 @@ public class UsersDao {
     if (liked != null) {
       userLiked = "1".equals(liked);
     }
-
     return new User(id, name, photo, userLiked);
   }
 
@@ -40,7 +38,6 @@ public class UsersDao {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
     return null;
   }
 
@@ -73,7 +70,6 @@ public class UsersDao {
     } catch (SQLException e) {
       e.printStackTrace();
     }
-
     return users;
   }
 
@@ -105,18 +101,14 @@ public class UsersDao {
                 PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE name=?")
         ) {
             statement.setString(1, name);
-
             statement.execute();
-
             ResultSet resultSet = statement.executeQuery();
-
             if (resultSet.next()) {
                 return getUserFromResultSet(resultSet);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 }

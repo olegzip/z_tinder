@@ -5,7 +5,6 @@ import dao.UsersDao;
 import entity.Message;
 import entity.User;
 import util.FreemarkerHandler;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +25,7 @@ public class MessagesServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-    doPost(req, resp);
+    //doPost(req, resp);
   }
 
   @Override
