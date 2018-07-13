@@ -1,1 +1,1 @@
-web: java -jar target/tinder-implementation-1.0-SNAPSHOT-jar-with-dependencies.jar $PORT
+web: java -jar target/z_tinder-1.0-SNAPSHOT-jar-with-dependencies.jar $PORT
