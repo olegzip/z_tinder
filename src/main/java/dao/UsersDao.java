@@ -30,7 +30,7 @@ public class UsersDao {
             Connection connection = DatabaseConnection.getConnection();
             Statement statement = connection.createStatement()
     ) {
-      ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE liked IS NULL LIMIT 1");
+      ResultSet resultSet = statement.executeQuery("SELECT * FROM users_no WHERE liked IS NULL LIMIT 1");
 
       if (resultSet.next()) {
         return getUserFromResultSet(resultSet);
@@ -44,7 +44,7 @@ public class UsersDao {
   public void saveLike(String name, boolean like) {
     try (
             Connection connection = DatabaseConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement("UPDATE users SET liked=? WHERE name=?")
+            PreparedStatement statement = connection.prepareStatement("UPDATE users_no SET liked=? WHERE name=?")
     ) {
       statement.setBoolean(1, like);
       statement.setString(2, name);
@@ -62,7 +62,7 @@ public class UsersDao {
             Connection connection = DatabaseConnection.getConnection();
             Statement statement = connection.createStatement()
     ) {
-      ResultSet resultSet = statement.executeQuery("SELECT * FROM users WHERE liked IS TRUE");
+      ResultSet resultSet = statement.executeQuery("SELECT * FROM users_no WHERE liked IS TRUE");
 
       while (resultSet.next()) {
         users.add(getUserFromResultSet(resultSet));
@@ -76,7 +76,7 @@ public class UsersDao {
   public User getUserByLoginAndPassword(String name, String password) {
     try (
             Connection connection = DatabaseConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE name=? AND password=?")
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM users_no WHERE name=? AND password=?")
     ) {
       statement.setString(1, name);
       statement.setString(2, password);
@@ -98,7 +98,7 @@ public class UsersDao {
     public User getUserByLogin(String name) {
         try (
                 Connection connection = DatabaseConnection.getConnection();
-                PreparedStatement statement = connection.prepareStatement("SELECT * FROM users WHERE name=?")
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM users_no WHERE name=?")
         ) {
             statement.setString(1, name);
             statement.execute();

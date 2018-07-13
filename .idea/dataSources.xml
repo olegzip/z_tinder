@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="jdbc:mysql://danit.cukm9c6zpjo8.us-west-2.rds.amazonaws.com:3306/fs5:3306" uuid="eb6ef3b1-d0bd-4914-a04a-252fec4ebcba">
+    <data-source source="LOCAL" name="z_tinder@localhost" uuid="ebfe364b-4375-4431-93a4-82dcfd4c64f3">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/z_tinder</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="fs5@danit.cukm9c6zpjo8.us-west-2.rds.amazonaws.com" uuid="b5936aa0-ea44-4d6c-869b-d5521badb33f">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://danit.cukm9c6zpjo8.us-west-2.rds.amazonaws.com:3306/fs5:3306</jdbc-url>
+      <jdbc-url>jdbc:mysql://danit.cukm9c6zpjo8.us-west-2.rds.amazonaws.com:3306/fs5</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
@@ -14,12 +20,6 @@
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
       </driver-properties>
-    </data-source>
-    <data-source source="LOCAL" name="z_tinder@localhost" uuid="ebfe364b-4375-4431-93a4-82dcfd4c64f3">
-      <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/z_tinder</jdbc-url>
     </data-source>
   </component>
 </project>

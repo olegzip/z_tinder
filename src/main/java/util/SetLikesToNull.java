@@ -9,7 +9,7 @@ public class SetLikesToNull {
   public static void setLikesToNull(){
     try (
             Connection connection = DatabaseConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement("UPDATE users SET liked=NULL")
+            PreparedStatement statement = connection.prepareStatement("UPDATE users_no SET liked=NULL")
     ) {
       statement.executeUpdate();
     } catch (SQLException e) {

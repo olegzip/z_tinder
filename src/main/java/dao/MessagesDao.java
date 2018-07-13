@@ -12,10 +12,10 @@ public class MessagesDao {
     List<Message> chat = new ArrayList<>();
     try (
             Connection connection = DatabaseConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM messages WHERE " +
-                    "messages.sender=? AND messages.reciever=? " +
-                    " UNION SELECT * FROM messages WHERE " +
-                    "messages.sender=? AND messages.reciever=? " +
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM messages_no WHERE " +
+                    "messages_no.sender=? AND messages_no.reciever=? " +
+                    " UNION SELECT * FROM messages_no WHERE " +
+                    "messages_no.sender=? AND messages_no.reciever=? " +
                     " ORDER BY id ASC")
     ){
       statement.setString(1, sender);
@@ -40,7 +40,7 @@ public class MessagesDao {
   public void saveMessage(String sender, String reciever, String message){
     try (
             Connection connection = DatabaseConnection.getConnection();
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO messages (sender, reciever, message) VALUES (?, ?, ?)")
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO messages_no (sender, reciever, message) VALUES (?, ?, ?)")
     ){
       statement.setString(1, sender);
       statement.setString(2, reciever);
