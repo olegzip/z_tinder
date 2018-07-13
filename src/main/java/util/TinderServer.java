@@ -10,8 +10,8 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import servlet.*;
 
 public class TinderServer {
-  public void start() throws Exception {
-    Server server = new Server(8080);
+  public void start(String port) throws Exception {
+    Server server = new Server(Integer.parseInt(port));
     ServletContextHandler handler = new ServletContextHandler();
 
     UsersDao usersDao = new UsersDao();
