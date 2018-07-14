@@ -16,7 +16,7 @@ public class LoginFilter implements Filter {
     HttpServletRequest req = (HttpServletRequest) servletRequest;
     HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
-    if (req.getServletPath().equals("/login")) {
+    if (req.getServletPath().equals("/login") || req.getServletPath().endsWith("/css/*")) {
       filterChain.doFilter(servletRequest, servletResponse);
       return;
     }

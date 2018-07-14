@@ -2,9 +2,7 @@ package util;
 
 import dao.MessagesDao;
 import dao.UsersDao;
-import filter.LoginFilter;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import servlet.*;
@@ -32,8 +30,8 @@ public class TinderServer {
     ServletHolder staticHolder = new ServletHolder(new StaticServlet());
     handler.addServlet(staticHolder, "/css/*");
 
-    FilterHolder loginFilter = new FilterHolder(new LoginFilter());
-    handler.addFilter(loginFilter, "/*", null);
+    /*FilterHolder loginFilter = new FilterHolder(new LoginFilter());
+    handler.addFilter(loginFilter, "/*", null);*/
 
     server.setHandler(handler);
     server.start();
