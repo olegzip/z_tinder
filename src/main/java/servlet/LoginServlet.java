@@ -44,6 +44,7 @@ public class LoginServlet extends HttpServlet {
     } else {
       Cookie cookie = new Cookie("user-id", user.getName());
       resp.addCookie(cookie);
+      SetLikesToNull.setLikesToNull();
       resp.sendRedirect("/users");
     }
   }
