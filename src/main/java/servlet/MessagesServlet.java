@@ -24,12 +24,12 @@ public class MessagesServlet extends HttpServlet {
   }
 
   @Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
     //doPost(req, resp);
   }
 
   @Override
-  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
     PrintWriter writer = resp.getWriter();
     String sender = "";
     String reciever = req.getParameter("reciever");

@@ -81,8 +81,6 @@ public class UsersDao {
       statement.setString(1, name);
       statement.setString(2, password);
 
-      statement.execute();
-
       ResultSet resultSet = statement.executeQuery();
 
       if (resultSet.next()) {

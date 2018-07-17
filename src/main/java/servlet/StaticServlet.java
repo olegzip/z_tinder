@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 public class StaticServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String url = req.getPathInfo();
         if (url!=null) {
             Path in = Paths.get("src/main/resources/static/html/css", url);
