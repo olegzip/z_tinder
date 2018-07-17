@@ -25,12 +25,13 @@
             <version>${jetty.version}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/postgresql/postgresql -->
+       <!-- &lt;!&ndash; https://mvnrepository.com/artifact/postgresql/postgresql &ndash;&gt;
         <dependency>
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.1-901-1.jdbc4</version>
-        </dependency>
+        </dependency>-->
+
         <!-- https://mvnrepository.com/artifact/freemarker/freemarker -->
         <dependency>
             <groupId>org.freemarker</groupId>
@@ -43,6 +44,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.6</version>
         </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-io -->
         <dependency>
